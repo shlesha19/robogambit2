@@ -41,7 +41,14 @@ def fake_serial_constructor(port, **kwargs):
         return mock_solenoid_serial
     raise Exception(f"Unexpected port: {port}")
 
-import serial as _serial_module
+try:
+    import serial as _serial_module
+except ImportError:
+    # If pyserial isn't installed, create a lightweight stub module so
+    # we can still assign Serial = fake_serial_constructor below.
+    import types
+    _serial_module = types.SimpleNamespace()
+
 _serial_module.Serial = fake_serial_constructor
 
 # ── 2. Import main (serial.Serial is already mocked, ports open cleanly) ─────

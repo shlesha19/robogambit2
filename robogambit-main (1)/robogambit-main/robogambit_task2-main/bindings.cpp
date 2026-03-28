@@ -2,9 +2,9 @@
 #include <pybind11/numpy.h>
 #include <string>
 #include <vector>
-#include "bitboard_eval.h" 
-#include "move_generation.h"
-#include "minimax.h"
+#include "../robogambit_task1-main/bitboard_eval.h" 
+#include "../robogambit_task1-main/move_generation.h"
+#include "../robogambit_task1-main/minimax.h"
 
 namespace py = pybind11;
 
